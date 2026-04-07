@@ -1,0 +1,18 @@
+# Build artifacts
+.build/
+.swiftpm/
+DerivedData/
+*.xcodeproj/
+xcuserdata/
+
+# Packaged app bundles (produced by Scripts/package_app.sh)
+*.app/
+*.icns
+*.zip
+
+# macOS
+.DS_Store
+
+# Local env / secrets
+*.local.env
+.env

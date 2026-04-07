@@ -15,9 +15,9 @@ A lightweight macOS menu bar app that tracks your keyboard shortcut and keystrok
 
 ## Screenshots
 
-| Shortcuts | Keys | Apps | Trends |
-|---|---|---|---|
-| ![](docs/screenshots/shortcuts.png) | ![](docs/screenshots/keys.png) | ![](docs/screenshots/apps.png) | ![](docs/screenshots/trends.png) |
+| Shortcuts | Keys | Apps |
+|---|---|---|
+| ![](docs/screenshots/shortcuts.png) | ![](docs/screenshots/keys.png) | ![](docs/screenshots/apps.png) |
 
 ## Requirements
 

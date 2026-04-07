@@ -1,0 +1,89 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & publish release
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+
+      - name: Derive version from tag
+        id: version
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          VERSION="${TAG_NAME#v}"
+          echo "tag=$TAG_NAME"       >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION"    >> "$GITHUB_OUTPUT"
+
+      - name: Sync version.env with tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          BUILD_NUMBER: ${{ github.run_number }}
+        run: |
+          {
+            echo "MARKETING_VERSION=${VERSION}"
+            echo "BUILD_NUMBER=${BUILD_NUMBER}"
+          } > version.env
+          cat version.env
+
+      - name: Build universal .app (ad-hoc signed)
+        env:
+          APP_NAME: KeyboardLogger
+          BUNDLE_ID: com.keyboardlogger.app
+          MENU_BAR_APP: "1"
+          SIGNING_MODE: adhoc
+          ARCHES: "arm64 x86_64"
+        run: ./Scripts/package_app.sh release
+
+      - name: Zip the app bundle
+        id: zip
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          ZIP="KeyboardLogger-v${VERSION}-universal.zip"
+          ditto -c -k --sequesterRsrc --keepParent KeyboardLogger.app "$ZIP"
+          shasum -a 256 "$ZIP" > "${ZIP}.sha256"
+          echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
+
+      - name: Extract changelog section
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if [ -f CHANGELOG.md ]; then
+            awk -v ver="$VERSION" '
+              $0 ~ "^## \\[" ver "\\]" {flag=1; next}
+              flag && /^## \[/ {exit}
+              flag {print}
+            ' CHANGELOG.md > release-notes.md
+          fi
+          if [ ! -s release-notes.md ]; then
+            echo "Release ${VERSION}" > release-notes.md
+          fi
+          cat release-notes.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          ZIP: ${{ steps.zip.outputs.zip }}
+        run: |
+          gh release create "$TAG" \
+            "$ZIP" \
+            "${ZIP}.sha256" \
+            --title "$TAG" \
+            --notes-file release-notes.md

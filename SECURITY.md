@@ -13,7 +13,7 @@ Only the latest release receives security updates.
 
 Please report suspected security vulnerabilities **privately** using one of:
 
-1. **GitHub Security Advisories** — open a private advisory at https://github.com/oguzhancakmak/keyboard-logger/security/advisories/new (preferred)
+1. **GitHub Security Advisories** — open a private advisory at https://github.com/muratcakmak/keyboard-logger/security/advisories/new (preferred)
 2. Or email the maintainer directly.
 
 Do **not** open a public GitHub issue for security problems.

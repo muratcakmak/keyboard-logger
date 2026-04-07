@@ -29,7 +29,7 @@ A lightweight macOS menu bar app that tracks your keyboard shortcut and keystrok
 
 ### From a release (recommended)
 
-1. Download `KeyboardLogger-vX.Y.Z-universal.zip` from the [latest release](https://github.com/oguzhancakmak/keyboard-logger/releases/latest).
+1. Download `KeyboardLogger-vX.Y.Z-universal.zip` from the [latest release](https://github.com/muratcakmak/keyboard-logger/releases/latest).
 2. Unzip and move `KeyboardLoggerApp.app` to `/Applications`.
 3. Release builds are **ad-hoc signed**, so Gatekeeper will complain on first launch. Clear the quarantine flag once:
    ```bash
@@ -40,7 +40,7 @@ A lightweight macOS menu bar app that tracks your keyboard shortcut and keystrok
 ### From source
 
 ```bash
-git clone https://github.com/oguzhancakmak/keyboard-logger.git
+git clone https://github.com/muratcakmak/keyboard-logger.git
 cd keyboard-logger
 APP_NAME=KeyboardLogger BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
   ./Scripts/compile_and_run.sh

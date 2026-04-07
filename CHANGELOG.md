@@ -17,5 +17,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - SwiftPM-based build with `Scripts/package_app.sh` producing a signed `.app` bundle
 - CI and tag-triggered release workflows on GitHub Actions
 
-[Unreleased]: https://github.com/oguzhancakmak/keyboard-logger/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/oguzhancakmak/keyboard-logger/releases/tag/v0.1.0
+[Unreleased]: https://github.com/muratcakmak/keyboard-logger/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/muratcakmak/keyboard-logger/releases/tag/v0.1.0

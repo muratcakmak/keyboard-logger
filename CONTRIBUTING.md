@@ -9,7 +9,7 @@ This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md). By particip
 ## Development setup
 
 ```bash
-git clone https://github.com/oguzhancakmak/keyboard-logger.git
+git clone https://github.com/muratcakmak/keyboard-logger.git
 cd keyboard-logger
 swift build
 swift test

@@ -18,7 +18,7 @@ swift test
 To build and launch the app end-to-end:
 
 ```bash
-APP_NAME=KeyboardLogger BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
+APP_NAME=KeyboardLoggerApp BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
   ./Scripts/compile_and_run.sh --test
 ```
 

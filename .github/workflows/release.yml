@@ -45,7 +45,7 @@ jobs:
 
       - name: Build universal .app (ad-hoc signed)
         env:
-          APP_NAME: KeyboardLogger
+          APP_NAME: KeyboardLoggerApp
           BUNDLE_ID: com.keyboardlogger.app
           MENU_BAR_APP: "1"
           SIGNING_MODE: adhoc
@@ -58,7 +58,7 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           ZIP="KeyboardLogger-v${VERSION}-universal.zip"
-          ditto -c -k --sequesterRsrc --keepParent KeyboardLogger.app "$ZIP"
+          ditto -c -k --sequesterRsrc --keepParent KeyboardLoggerApp.app "$ZIP"
           shasum -a 256 "$ZIP" > "${ZIP}.sha256"
           echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
 

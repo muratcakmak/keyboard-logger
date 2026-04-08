@@ -42,7 +42,7 @@ A lightweight macOS menu bar app that tracks your keyboard shortcut and keystrok
 ```bash
 git clone https://github.com/muratcakmak/keyboard-logger.git
 cd keyboard-logger
-APP_NAME=KeyboardLogger BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
+APP_NAME=KeyboardLoggerApp BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
   ./Scripts/compile_and_run.sh
 ```
 
@@ -85,7 +85,7 @@ swift test
 # Package + launch with a stable dev signing identity (prevents repeated permission prompts)
 ./Scripts/setup_dev_signing.sh
 export APP_IDENTITY='KeyboardLogger Development'
-APP_NAME=KeyboardLogger BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
+APP_NAME=KeyboardLoggerApp BUNDLE_ID=com.keyboardlogger.app MENU_BAR_APP=1 \
   ./Scripts/compile_and_run.sh --test
 ```
 
